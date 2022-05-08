@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class Client {
     public static void main(String[] args) {
         int count = 0;
-        String host = "localhost";
+        String host = "netology.homework";
         int port = 8889;
         try (Socket socket = new Socket(host, port);
              PrintWriter printWriter = new PrintWriter(socket.getOutputStream( ), true);
@@ -21,19 +21,19 @@ public class Client {
                 if (s == null) {
                     break;
                 }
-                if (s != null && count < 2 && !s.equals("What are you doing?")) {
+                if (count < 2 && !s.equals("What are you doing?")) {
                     System.out.println(s);
                     String chat = bf.readLine( );
                     printWriter.println(chat);
                     count++;
-                } else if (s != null && count >= 2 &&
-                        !s.equals("What are you doing?") && !s.equals("And do you like your occupation? (yes/no)")) {
+                } else if (count >= 2 && !s.equals("What are you doing?") &&
+                        !s.equals("And do you like your occupation? (yes/no)")) {
                     System.out.println(s);
-                } else if (s != null && s.equals("What are you doing?")) {
+                } else if (s.equals("What are you doing?")) {
                     System.out.println(s);
                     String chat = bf.readLine( );
                     printWriter.println(chat);
-                } else if (s != null && s.equals("And do you like your occupation? (yes/no)")) {
+                } else if (s.equals("And do you like your occupation? (yes/no)")) {
                     System.out.println(s);
                     String chat = bf.readLine( );
                     printWriter.println(chat);
